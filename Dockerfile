@@ -1,7 +1,7 @@
 FROM golang
 
 RUN apt-get update \
- && apt-get install -y hub \
+ && apt-get install -y hub git \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 

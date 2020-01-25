@@ -17,3 +17,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reviewer: sue445
           assign: sue445
+          go_mod_directory: dummy

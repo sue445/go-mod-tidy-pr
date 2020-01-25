@@ -7,11 +7,15 @@ readonly MILESTONE=$4
 readonly DRAFT=$5
 readonly GO_MOD_DIRCTORY=$6
 
-echo "REVIEWER=$REVIEWER"
-echo "ASSIGN=$ASSIGN"
-echo "MILESTONE=$MILESTONE"
-echo "DRAFT=$DRAFT"
-echo "GO_MOD_DIRCTORY=$GO_MOD_DIRCTORY"
+set -x
+
+export PATH="/go/bin:/usr/local/go/bin:$PATH"
 
 cd $GO_MOD_DIRCTORY
-pwd
+
+go mod tidy
+
+if [ $(git status | grep "nothing to commit, working tree clean" | wc -l) = "1" ]; then
+  echo "go.sum is not updated"
+  exit 0
+fi
