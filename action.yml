@@ -1,12 +1,12 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: go-mod-tidy-pr
+description: Run `go mod tidy` and create PullRequest
+author: sue445
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  github_token:
+    description: GitHub Token
+    required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
   args:
-    - ${{ inputs.myInput }}
+    - --github-token ${{ inputs.github_token }}
