@@ -29,10 +29,15 @@ fi
 git config user.email "$GIT_USER_EMAIL"
 git config user.name "$GIT_USER_NAME"
 
-branch_name=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
+BRANCH_NAME=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
 
-git checkout -b $branch_name
+GITHUB_USER_NAME=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 1)
+REMOTE_URL="https://${GITHUB_USER_NAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+git remote add push_via_ci $REMOTE_URL
+git checkout -b $BRANCH_NAME
 git commit -am ":put_litter_in_its_place: go mod tidy"
+git push push_via_ci $BRANCH_NAME
 
 if [ -n "$BASE" ]; then
   hub_args="$hub_args --base=$BASE"
@@ -54,4 +59,4 @@ if [ -n "$DRAFT" ]; then
   hub_args="$hub_args --draft"
 fi
 
-hub pull-request --push --no-edit $hub_args
+hub pull-request --no-edit $hub_args
