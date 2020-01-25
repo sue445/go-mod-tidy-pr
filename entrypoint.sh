@@ -32,8 +32,8 @@ git config user.name "$GIT_USER_NAME"
 
 readonly BRANCH_NAME=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
 
-readonly GITHUB_USER_NAME=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 1)
-readonly REMOTE_URL="https://${GITHUB_USER_NAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+export GITHUB_USER=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 1)
+readonly REMOTE_URL="https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 git remote add push_via_ci $REMOTE_URL
 git checkout -b $BRANCH_NAME
