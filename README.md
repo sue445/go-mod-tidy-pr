@@ -1,6 +1,8 @@
 # go-mod-tidy-pr
 Run `go mod tidy` and create PullRequest
 
+https://github.com/marketplace/actions/go-mod-tidy-pr
+
 ## Usage
 ```yaml
 jobs:
