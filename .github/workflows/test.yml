@@ -1,0 +1,17 @@
+name: test
+
+on: push
+
+jobs:
+  test:
+    name: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run go-mod-tidy-pr
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
