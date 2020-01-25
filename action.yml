@@ -5,6 +5,11 @@ inputs:
   github_token:
     description: GitHub Token
     required: true
+  base:
+    description: |
+      The base branch in the "[OWNER:]BRANCH" format. Defaults to the default branch of the upstream repository (usually "master").
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
   reviewer:
     description: |
       A comma-separated list (no spaces around the comma) of GitHub handles to request a review from.
@@ -38,6 +43,7 @@ runs:
   image: Dockerfile
   args:
     - ${{ inputs.github_token }}
+    - ${{ inputs.base }}
     - ${{ inputs.reviewer }}
     - ${{ inputs.assign }}
     - ${{ inputs.milestone }}
