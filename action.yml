@@ -25,6 +25,10 @@ inputs:
       Create the pull request as a draft.
       See https://hub.github.com/hub-pull-request.1.html
     required: false
+  go_mod_directory:
+    description: Directory where go.mod is located
+    required: true
+    default: .
 
 runs:
   using: docker
@@ -35,3 +39,4 @@ runs:
     - ${{ inputs.assign }}
     - ${{ inputs.milestone }}
     - ${{ inputs.draft }}
+    - ${{ inputs.go_mod_directory }}
