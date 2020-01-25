@@ -12,6 +12,8 @@ readonly GO_MOD_DIRCTORY=${9}
 readonly DEBUG=${10}
 readonly DUPLICATE=${11}
 
+readonly PR_TITLE_PREFIX="go mod tidy at "
+
 if [ -n "${DEBUG}" ]; then
   set -x
   export HUB_VERBOSE="true"
@@ -29,7 +31,7 @@ if [ $(git status | grep "nothing to commit, working tree clean" | wc -l) = "1" 
 fi
 
 if [ -z "$DUPLICATE" ]; then
-  if [ $(hub pr list | grep "go-mod-tidy-" | wc -l ) != "0" ]; then
+  if [ $(hub pr list | grep "${PR_TITLE_PREFIX}" | wc -l ) != "0" ]; then
     echo "Skip creating PullRequest because it has already existed"
     exit 0
   fi
@@ -68,4 +70,4 @@ if [ -n "$DRAFT" ]; then
   hub_args="$hub_args --draft"
 fi
 
-hub pull-request --no-edit --message="go mod tidy at $(date)" $hub_args
+hub pull-request --no-edit --message="${PR_TITLE_PREFIX}$(date)" $hub_args
