@@ -1,16 +1,16 @@
 #!/bin/sh -le
 
-export GITHUB_TOKEN=${1}
-readonly GIT_USER_NAME=${2}
-readonly GIT_USER_EMAIL=${3}
-readonly BASE=${4}
-readonly REVIEWER=${5}
-readonly ASSIGN=${6}
-readonly MILESTONE=${7}
-readonly DRAFT=${8}
-readonly GO_MOD_DIRCTORY=${9}
-readonly DEBUG=${10}
-readonly DUPLICATE=${11}
+export GITHUB_TOKEN="${1}"
+readonly GIT_USER_NAME="${2}"
+readonly GIT_USER_EMAIL="${3}"
+readonly BASE="${4}"
+readonly REVIEWER="${5}"
+readonly ASSIGN="${6}"
+readonly MILESTONE="${7}"
+readonly DRAFT="${8}"
+readonly GO_MOD_DIRCTORY="${9}"
+readonly DEBUG="${10}"
+readonly DUPLICATE="${11}"
 
 readonly PR_TITLE_PREFIX="go mod tidy at "
 
