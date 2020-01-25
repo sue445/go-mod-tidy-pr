@@ -1,13 +1,15 @@
 #!/bin/sh -le
 
-export GITHUB_TOKEN=$1
-readonly BASE=$2
-readonly REVIEWER=$3
-readonly ASSIGN=$4
-readonly MILESTONE=$5
-readonly DRAFT=$6
-readonly GO_MOD_DIRCTORY=$7
-readonly DEBUG=$8
+export GITHUB_TOKEN=${1}
+readonly GIT_USER_NAME=${2}
+readonly GIT_USER_EMAIL=${3}
+readonly BASE=${4}
+readonly REVIEWER=${5}
+readonly ASSIGN=${6}
+readonly MILESTONE=${7}
+readonly DRAFT=${8}
+readonly GO_MOD_DIRCTORY=${9}
+readonly DEBUG=${10}
 
 if [ -n "${DEBUG}" ]; then
   set -x
@@ -23,6 +25,9 @@ if [ $(git status | grep "nothing to commit, working tree clean" | wc -l) = "1" 
   echo "go.sum is not updated"
   exit 0
 fi
+
+git config user.email "$GIT_USER_EMAIL"
+git config user.name "$GIT_USER_NAME"
 
 branch_name=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
 
