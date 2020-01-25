@@ -3,6 +3,11 @@ Run `go mod tidy` and create PullRequest
 
 https://github.com/marketplace/actions/go-mod-tidy-pr
 
+## Example
+![example](img/example.png)
+
+https://github.com/sue445/go-mod-tidy-pr/pull/12
+
 ## Usage
 ```yaml
 name: go-mod-tidy-pr
