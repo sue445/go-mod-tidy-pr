@@ -5,8 +5,33 @@ inputs:
   github_token:
     description: GitHub Token
     required: true
+  reviewer:
+    description: |
+      A comma-separated list (no spaces around the comma) of GitHub handles to request a review from.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  assign:
+    description: |
+      A comma-separated list (no spaces around the comma) of GitHub handles to assign to this pull request.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  milestone:
+    description: |
+      The milestone name to add to this pull request. Passing the milestone number is deprecated.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  draft:
+    description: |
+      Create the pull request as a draft.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+
 runs:
   using: docker
   image: Dockerfile
   args:
-    - --github-token ${{ inputs.github_token }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.reviewer }}
+    - ${{ inputs.assign }}
+    - ${{ inputs.milestone }}
+    - ${{ inputs.draft }}

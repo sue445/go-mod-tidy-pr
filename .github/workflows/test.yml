@@ -15,3 +15,5 @@ jobs:
         uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          reviewer: sue445
+          assign: sue445
