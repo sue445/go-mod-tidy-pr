@@ -1,6 +1,9 @@
 name: go-mod-tidy-pr
 description: Run `go mod tidy` and create PullRequest
 author: sue445
+branding:
+  icon: code
+  color: green
 inputs: 
   github_token:
     description: GitHub Token
