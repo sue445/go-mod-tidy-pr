@@ -21,3 +21,13 @@ jobs:
           assign: sue445
           go_mod_directory: dummy
           debug: "true"
+
+      - name: Slack Notification
+        uses: homoluctus/slatify@master
+        if: always()
+        with:
+          job_name: "*test*"
+          type: ${{ job.status }}
+          icon_emoji: ":octocat:"
+          url: ${{ secrets.SLACK_WEBHOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}
