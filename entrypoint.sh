@@ -13,6 +13,7 @@ readonly DEBUG=${10}
 
 if [ -n "${DEBUG}" ]; then
   set -x
+  export HUB_VERBOSE="true"
 fi
 
 export PATH="/go/bin:/usr/local/go/bin:$PATH"
