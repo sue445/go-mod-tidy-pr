@@ -29,10 +29,10 @@ fi
 git config user.email "$GIT_USER_EMAIL"
 git config user.name "$GIT_USER_NAME"
 
-BRANCH_NAME=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
+readonly BRANCH_NAME=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
 
-GITHUB_USER_NAME=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 1)
-REMOTE_URL="https://${GITHUB_USER_NAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+readonly GITHUB_USER_NAME=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 1)
+readonly REMOTE_URL="https://${GITHUB_USER_NAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 git remote add push_via_ci $REMOTE_URL
 git checkout -b $BRANCH_NAME
