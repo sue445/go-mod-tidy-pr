@@ -43,6 +43,9 @@ inputs:
   debug:
     description: Whether print debug logging
     required: false
+  duplicate:
+    description: Whether create PullRequest even if it has already existed
+    required: false
 
 runs:
   using: docker
@@ -58,3 +61,4 @@ runs:
     - ${{ inputs.draft }}
     - ${{ inputs.go_mod_directory }}
     - ${{ inputs.debug }}
+    - ${{ inputs.duplicate }}

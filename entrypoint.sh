@@ -10,6 +10,7 @@ readonly MILESTONE=${7}
 readonly DRAFT=${8}
 readonly GO_MOD_DIRCTORY=${9}
 readonly DEBUG=${10}
+readonly DUPLICATE=${11}
 
 if [ -n "${DEBUG}" ]; then
   set -x
@@ -25,6 +26,13 @@ go mod tidy
 if [ $(git status | grep "nothing to commit, working tree clean" | wc -l) = "1" ]; then
   echo "go.sum is not updated"
   exit 0
+fi
+
+if [ -z "$DUPLICATE" ]; then
+  if [ $(hub pr list | grep "go-mod-tidy-" | wc -l ) != "0" ]; then
+    echo "Skip creating PullRequest because it has already existed"
+    exit 0
+  fi
 fi
 
 git config user.email "$GIT_USER_EMAIL"
