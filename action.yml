@@ -1,12 +1,60 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: go-mod-tidy-pr
+description: Run `go mod tidy` and create PullRequest
+author: sue445
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  github_token:
+    description: GitHub Token
+    required: true
+  git_user_name:
+    description: Username for commit
+    required: true
+  git_user_email:
+    description: E-mail for commit
+    required: true
+  base:
+    description: |
+      The base branch in the "[OWNER:]BRANCH" format. Defaults to the default branch of the upstream repository (usually "master").
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  reviewer:
+    description: |
+      A comma-separated list (no spaces around the comma) of GitHub handles to request a review from.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  assign:
+    description: |
+      A comma-separated list (no spaces around the comma) of GitHub handles to assign to this pull request.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  milestone:
+    description: |
+      The milestone name to add to this pull request. Passing the milestone number is deprecated.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  draft:
+    description: |
+      Create the pull request as a draft.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
+  go_mod_directory:
+    description: Directory where go.mod is located
+    required: true
+    default: .
+  debug:
+    description: Whether print debug logging
+    required: false
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.git_user_name }}
+    - ${{ inputs.git_user_email }}
+    - ${{ inputs.base }}
+    - ${{ inputs.reviewer }}
+    - ${{ inputs.assign }}
+    - ${{ inputs.milestone }}
+    - ${{ inputs.draft }}
+    - ${{ inputs.go_mod_directory }}
+    - ${{ inputs.debug }}
