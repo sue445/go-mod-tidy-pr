@@ -59,4 +59,4 @@ if [ -n "$DRAFT" ]; then
   hub_args="$hub_args --draft"
 fi
 
-hub pull-request --no-edit $hub_args
+hub pull-request --no-edit --message="go mod tidy at $(date)" $hub_args
