@@ -29,6 +29,9 @@ inputs:
     description: Directory where go.mod is located
     required: true
     default: .
+  debug:
+    description: Whether print debug logging
+    required: false
 
 runs:
   using: docker
@@ -40,3 +43,4 @@ runs:
     - ${{ inputs.milestone }}
     - ${{ inputs.draft }}
     - ${{ inputs.go_mod_directory }}
+    - ${{ inputs.debug }}

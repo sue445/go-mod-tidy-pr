@@ -6,8 +6,11 @@ readonly ASSIGN=$3
 readonly MILESTONE=$4
 readonly DRAFT=$5
 readonly GO_MOD_DIRCTORY=$6
+readonly DEBUG=$7
 
-set -x
+if [ -n "${DEBUG}" ]; then
+  set -x
+fi
 
 export PATH="/go/bin:/usr/local/go/bin:$PATH"
 
