@@ -35,19 +35,19 @@ git checkout -b $branch_name
 git commit -am ":put_litter_in_its_place: go mod tidy"
 
 if [ -n "$BASE" ]; then
-  hub_args="$hub_args --base $BASE"
+  hub_args="$hub_args --base=$BASE"
 fi
 
 if [ -n "$REVIEWER" ]; then
-  hub_args="$hub_args --reviewer $REVIEWER"
+  hub_args="$hub_args --reviewer=$REVIEWER"
 fi
 
 if [ -n "$ASSIGN" ]; then
-  hub_args="$hub_args --assign $ASSIGN"
+  hub_args="$hub_args --assign=$ASSIGN"
 fi
 
 if [ -n "$MILESTONE" ]; then
-  hub_args="$hub_args --milestone $MILESTONE"
+  hub_args="$hub_args --milestone=$MILESTONE"
 fi
 
 if [ -n "$DRAFT" ]; then
