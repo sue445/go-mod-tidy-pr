@@ -5,6 +5,12 @@ https://github.com/marketplace/actions/go-mod-tidy-pr
 
 ## Usage
 ```yaml
+name: go-mod-tidy-pr
+
+on:
+  schedule:
+    - cron: "0 0 * * 1" # Weekly build
+
 jobs:
   go-mod-tidy-pr:
     name: go-mod-tidy-pr
@@ -15,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run go-mod-tidy-pr
-        uses: sue445/go-mod-tidy-pr
+        uses: sue445/go-mod-tidy-pr@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_user_name: GitHub Actions
