@@ -34,7 +34,7 @@ jobs:
           # reviewer: foo
           # assign: foo
           # milestone: some_milestone
-          # labels: go mod tidy
+          # labels: go-mod-tidy
           # draft: "true"
           # go_mod_directory: "/dir/to/go-mod"
           # debug: "true"
