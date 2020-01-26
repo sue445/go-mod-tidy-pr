@@ -34,6 +34,11 @@ inputs:
       The milestone name to add to this pull request. Passing the milestone number is deprecated.
       See https://hub.github.com/hub-pull-request.1.html
     required: false
+  labels:
+    description: |
+      A comma-separated list (no spaces around the comma) of labels to add to this pull request. Labels will be created if they do not already exist.
+      See https://hub.github.com/hub-pull-request.1.html
+    required: false
   draft:
     description: |
       Create the pull request as a draft.
@@ -61,6 +66,7 @@ runs:
     - ${{ inputs.reviewer }}
     - ${{ inputs.assign }}
     - ${{ inputs.milestone }}
+    - ${{ inputs.labels }}
     - ${{ inputs.draft }}
     - ${{ inputs.go_mod_directory }}
     - ${{ inputs.debug }}

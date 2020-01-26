@@ -7,10 +7,11 @@ readonly BASE="${4}"
 readonly REVIEWER="${5}"
 readonly ASSIGN="${6}"
 readonly MILESTONE="${7}"
-readonly DRAFT="${8}"
-readonly GO_MOD_DIRCTORY="${9}"
-readonly DEBUG="${10}"
-readonly DUPLICATE="${11}"
+readonly LABELS="${8}"
+readonly DRAFT="${9}"
+readonly GO_MOD_DIRCTORY="${10}"
+readonly DEBUG="${11}"
+readonly DUPLICATE="${12}"
 
 readonly PR_TITLE_PREFIX="go mod tidy at "
 
@@ -64,6 +65,10 @@ fi
 
 if [ -n "$MILESTONE" ]; then
   hub_args="$hub_args --milestone=$MILESTONE"
+fi
+
+if [ -n "$LABELS" ]; then
+  hub_args="$hub_args --labels=$LABELS"
 fi
 
 if [ -n "$DRAFT" ]; then
