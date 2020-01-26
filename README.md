@@ -3,6 +3,8 @@ Run `go mod tidy` and create PullRequest
 
 https://github.com/marketplace/actions/go-mod-tidy-pr
 
+[![Build Status](https://github.com/sue445/go-mod-tidy-pr/workflows/test/badge.svg?branch=master)](https://github.com/sue445/go-mod-tidy-pr/actions?query=workflow%3Atest)
+
 ## Example
 ![example](img/example.png)
 
