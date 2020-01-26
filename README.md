@@ -34,6 +34,7 @@ jobs:
           # reviewer: foo
           # assign: foo
           # milestone: some_milestone
+          # labels: go mod tidy
           # draft: "true"
           # go_mod_directory: "/dir/to/go-mod"
           # debug: "true"
@@ -58,6 +59,9 @@ jobs:
   * See https://hub.github.com/hub-pull-request.1.html
 * `milestone`
   * The milestone name to add to this pull request. Passing the milestone number is deprecated.
+  * See https://hub.github.com/hub-pull-request.1.html
+* `labels`
+  * A comma-separated list (no spaces around the comma) of labels to add to this pull request. Labels will be created if they do not already exist.
   * See https://hub.github.com/hub-pull-request.1.html
 * `draft`
   * Create the pull request as a draft.
