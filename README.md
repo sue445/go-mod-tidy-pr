@@ -10,6 +10,7 @@ https://github.com/sue445/go-mod-tidy-pr/pull/12
 
 ## Usage
 ```yaml
+# .github/workflows/go-mod-tidy-pr.yml
 name: go-mod-tidy-pr
 
 on:
