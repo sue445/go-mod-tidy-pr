@@ -19,6 +19,7 @@ jobs:
           git_user_email: github-actions@example.cpm
           reviewer: sue445
           assign: sue445
+          labels: go-mod-tidy
           go_mod_directory: dummy
           debug: "true"
 
