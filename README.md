@@ -76,3 +76,6 @@ jobs:
   * Whether print debug logging
 * `duplicate`
   * Whether create PullRequest even if it has already existed
+
+## CHANGELOG
+https://github.com/sue445/go-mod-tidy-pr/blob/master/CHANGELOG.md
