@@ -1,5 +1,5 @@
 name: go-mod-tidy-pr
-description: Run `go mod tidy` and create PullRequest
+description: Run `go mod tidy` and create PullRequest on GitHub Actions
 author: sue445
 branding:
   icon: code
