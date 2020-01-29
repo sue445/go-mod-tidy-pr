@@ -4,7 +4,7 @@ author: sue445
 branding:
   icon: code
   color: green
-inputs: 
+inputs:
   github_token:
     description: GitHub Token
     required: true
