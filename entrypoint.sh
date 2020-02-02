@@ -12,12 +12,17 @@ readonly DRAFT="${9}"
 readonly GO_MOD_DIRCTORY="${10}"
 readonly DEBUG="${11}"
 readonly DUPLICATE="${12}"
+readonly TIMEZONE="${13}"
 
 readonly PR_TITLE_PREFIX="go mod tidy at "
 
 if [ -n "${DEBUG}" ]; then
   set -x
   export HUB_VERBOSE="true"
+fi
+
+if [ -n "${TIMEZONE}" ]; then
+  export TZ=$TIMEZONE
 fi
 
 export PATH="/go/bin:/usr/local/go/bin:$PATH"

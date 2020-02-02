@@ -54,6 +54,9 @@ inputs:
   duplicate:
     description: Whether create PullRequest even if it has already existed
     required: false
+  timezone:
+    description: Timezone to be used if set (e.g. `Asia/Tokyo`)
+    required: false
 
 runs:
   using: docker
@@ -71,3 +74,4 @@ runs:
     - ${{ inputs.go_mod_directory }}
     - ${{ inputs.debug }}
     - ${{ inputs.duplicate }}
+    - ${{ inputs.timezone }}

@@ -26,6 +26,7 @@ jobs:
           labels: go-mod-tidy
           go_mod_directory: dummy
           debug: "true"
+          timezone: Asia/Tokyo
 
       - name: Slack Notification
         uses: homoluctus/slatify@master
