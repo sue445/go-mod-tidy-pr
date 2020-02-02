@@ -42,6 +42,7 @@ jobs:
           # go_mod_directory: "/dir/to/go-mod"
           # debug: "true"
           # duplicate: "true"
+          # timezone: Asia/Tokyo
 ```
 
 ## Parameters
@@ -76,6 +77,8 @@ jobs:
   * Whether print debug logging
 * `duplicate`
   * Whether create PullRequest even if it has already existed
+* `timezone`
+  * Timezone to be used if set (e.g. `Asia/Tokyo`)
 
 ## CHANGELOG
 https://github.com/sue445/go-mod-tidy-pr/blob/master/CHANGELOG.md
