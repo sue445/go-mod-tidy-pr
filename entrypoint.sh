@@ -31,6 +31,10 @@ cd $GO_MOD_DIRCTORY
 
 go mod tidy
 
+if [ -d vendor/ ]; then
+  go mod vendor
+fi
+
 if [ $(git status | grep "nothing to commit, working tree clean" | wc -l) = "1" ]; then
   echo "go.sum is not updated"
   exit 0
@@ -53,7 +57,14 @@ readonly REMOTE_URL="https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_
 
 git remote add push_via_ci $REMOTE_URL
 git checkout -b $BRANCH_NAME
-git commit -am ":put_litter_in_its_place: go mod tidy"
+
+if [ -d vendor/ ]; then
+  git add vendor/
+  git commit -am ":put_litter_in_its_place: go mod tidy && go mod vendor"
+else
+  git commit -am ":put_litter_in_its_place: go mod tidy"
+fi
+
 git push push_via_ci $BRANCH_NAME
 
 if [ -n "$BASE" ]; then

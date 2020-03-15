@@ -1,16 +1,28 @@
 name: test
 
 on:
-  pull_request:
   push:
     branches:
       - master
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   test:
     name: test
 
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        test_dir:
+          - test/dummy_with_vendor
+          - test/dummy_without_vendor
 
     steps:
       - uses: actions/checkout@v2
@@ -24,15 +36,35 @@ jobs:
           reviewer: sue445
           assign: sue445
           labels: go-mod-tidy
-          go_mod_directory: dummy
+          go_mod_directory: ${{ matrix.test_dir }}
           debug: "true"
           timezone: Asia/Tokyo
+          duplicate: "true"
 
-      - name: Slack Notification
+      - name: Slack Notification (not success)
+        uses: homoluctus/slatify@master
+        if: "! success()"
+        continue-on-error: true
+        with:
+          job_name: ${{ format('*build* ({0})', matrix.test_dir) }}
+          type: ${{ job.status }}
+          icon_emoji: ":octocat:"
+          url: ${{ secrets.SLACK_WEBHOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  notify:
+    needs:
+      - test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Slack Notification (success)
         uses: homoluctus/slatify@master
         if: always()
+        continue-on-error: true
         with:
-          job_name: "*test*"
+          job_name: '*build*'
           type: ${{ job.status }}
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}
