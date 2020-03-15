@@ -21,8 +21,8 @@ jobs:
 
       matrix:
         test_dir:
-          - dummy/dummy_with_vendor
-          - dummy/dummy_without_vendor
+          - test/dummy_with_vendor
+          - test/dummy_without_vendor
 
     steps:
       - uses: actions/checkout@v2
