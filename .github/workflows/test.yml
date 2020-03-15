@@ -1,10 +1,14 @@
 name: test
 
 on:
-  pull_request:
   push:
     branches:
       - master
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   test:
@@ -12,10 +16,18 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+
+      matrix:
+        test_dir:
+          - dummy/dummy_with_vendor
+          - dummy/dummy_without_vendor
+
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run go-mod-tidy-pr (dummy/dummy_without_vendor)
+      - name: Run go-mod-tidy-pr
         uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -24,29 +36,35 @@ jobs:
           reviewer: sue445
           assign: sue445
           labels: go-mod-tidy
-          go_mod_directory: dummy/dummy_without_vendor
+          go_mod_directory: ${{ matrix.test_dir }}
           debug: "true"
           timezone: Asia/Tokyo
+          duplicate: "true"
 
-      - name: Run go-mod-tidy-pr (dummy/dummy_with_vendor)
-        uses: ./
+      - name: Slack Notification (not success)
+        uses: homoluctus/slatify@master
+        if: "! success()"
+        continue-on-error: true
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_user_name: GitHub Actions
-          git_user_email: github-actions@example.cpm
-          reviewer: sue445
-          assign: sue445
-          labels: go-mod-tidy
-          go_mod_directory: dummy/dummy_with_vendor
-          debug: "true"
-          timezone: Asia/Tokyo
+          job_name: ${{ format('*build* ({0})', matrix.test_dir) }}
+          type: ${{ job.status }}
+          icon_emoji: ":octocat:"
+          url: ${{ secrets.SLACK_WEBHOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Slack Notification
+  notify:
+    needs:
+      - test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Slack Notification (success)
         uses: homoluctus/slatify@master
         if: always()
         continue-on-error: true
         with:
-          job_name: "*test*"
+          job_name: '*build*'
           type: ${{ job.status }}
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}
