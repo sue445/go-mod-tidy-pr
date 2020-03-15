@@ -1,4 +1,4 @@
-module github.com/sue445/go-mod-tidy-pr-action/dummy/dummy_without_vendor
+module github.com/sue445/go-mod-tidy-pr-action/dummy/dummy_with_vendor
 
 go 1.13
 
