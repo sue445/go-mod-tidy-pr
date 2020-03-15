@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run go-mod-tidy-pr
+      - name: Run go-mod-tidy-pr (dummy/dummy_without_vendor)
         uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -24,13 +24,27 @@ jobs:
           reviewer: sue445
           assign: sue445
           labels: go-mod-tidy
-          go_mod_directory: dummy
+          go_mod_directory: dummy/dummy_without_vendor
+          debug: "true"
+          timezone: Asia/Tokyo
+
+      - name: Run go-mod-tidy-pr (dummy/dummy_with_vendor)
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git_user_name: GitHub Actions
+          git_user_email: github-actions@example.cpm
+          reviewer: sue445
+          assign: sue445
+          labels: go-mod-tidy
+          go_mod_directory: dummy/dummy_with_vendor
           debug: "true"
           timezone: Asia/Tokyo
 
       - name: Slack Notification
         uses: homoluctus/slatify@master
         if: always()
+        continue-on-error: true
         with:
           job_name: "*test*"
           type: ${{ job.status }}
