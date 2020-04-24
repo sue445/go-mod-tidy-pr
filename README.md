@@ -42,6 +42,7 @@ jobs:
           # labels: go-mod-tidy
           # draft: "true"
           # go_mod_directory: "/dir/to/go-mod"
+          # go_version: 1.14.2
           # debug: "true"
           # duplicate: "true"
           # timezone: Asia/Tokyo
