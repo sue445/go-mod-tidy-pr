@@ -75,6 +75,8 @@ jobs:
 * `go_mod_directory` **Required**
   * Directory where `go.mod` is located
   * Default. `.`
+* `go_version`
+  * Go version to be used. Defaults to the latest version.
 * `debug`
   * Whether print debug logging
 * `duplicate`
