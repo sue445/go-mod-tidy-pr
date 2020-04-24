@@ -48,6 +48,9 @@ inputs:
     description: Directory where go.mod is located
     required: true
     default: .
+  go_version:
+    description: Specify your Go version. Defaults to the latest version.
+    required: false
   debug:
     description: Whether print debug logging
     required: false
@@ -72,6 +75,7 @@ runs:
     - ${{ inputs.labels }}
     - ${{ inputs.draft }}
     - ${{ inputs.go_mod_directory }}
+    - ${{ inputs.go_version }}
     - ${{ inputs.debug }}
     - ${{ inputs.duplicate }}
     - ${{ inputs.timezone }}
