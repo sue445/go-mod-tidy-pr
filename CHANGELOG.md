@@ -1,5 +1,11 @@
 ## master
-[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.0...master)
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.1...master)
+
+## v1.4.1
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.0...v1.4.1)
+
+* Bugfixed. Doesn't work `timezone` arg
+  * https://github.com/sue445/go-mod-tidy-pr/pull/34
 
 ## v1.4.0
 [full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.3.0...v1.4.0)
