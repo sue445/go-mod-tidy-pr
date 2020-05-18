@@ -19,21 +19,21 @@ readonly PR_TITLE_PREFIX="go mod tidy at "
 
 install_go()
 {
-    if [ ! -n "${GO_VERSION}" ]; then
-        go_version=$(curl -s https://api.github.com/repos/golang/go/git/refs/tags | \
-            jq --raw-output '.[].ref | select(test("^refs/tags/go[0-9.]+$"))' | \
-            tail -n 1 | \
-            sed 's!refs/tags/go!!')
-    else
-        go_version=${GO_VERSION}
-    fi
+  if [ ! -n "${GO_VERSION}" ]; then
+    go_version=$(curl -s https://api.github.com/repos/golang/go/git/refs/tags | \
+      jq --raw-output '.[].ref | select(test("^refs/tags/go[0-9.]+$"))' | \
+      tail -n 1 | \
+      sed 's!refs/tags/go!!')
+  else
+    go_version=${GO_VERSION}
+  fi
 
-    echo "installing Go ${go_version}"
-    # from https://golang.org/doc/install#tarball
-    go_tar=go${go_version}.linux-amd64.tar.gz
-    wget https://dl.google.com/go/${go_tar}
-    tar -C /usr/local -xzf ${go_tar}
-    rm $go_tar
+  echo "installing Go ${go_version}"
+  # from https://golang.org/doc/install#tarball
+  go_tar=go${go_version}.linux-amd64.tar.gz
+  wget https://dl.google.com/go/${go_tar}
+  tar -C /usr/local -xzf ${go_tar}
+  rm $go_tar
 }
 
 
