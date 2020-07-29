@@ -85,5 +85,15 @@ jobs:
 * `timezone`
   * Timezone to be used if set (e.g. `Asia/Tokyo`)
 
+## Note :warning:
+If you configure Pull Request build on GitHub Action, builds **doesn't trigger** when `go-mod-tidy-pr` creates Pull Request.
+
+https://docs.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
+
+The workaround is one of the following.
+
+1. Use personal access token instead of `secrets.GITHUB_TOKEN`
+2. Use CI other than GitHub Action on Pull Request build
+
 ## CHANGELOG
 https://github.com/sue445/go-mod-tidy-pr/blob/master/CHANGELOG.md
