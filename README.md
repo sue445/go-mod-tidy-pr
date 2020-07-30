@@ -92,8 +92,9 @@ https://docs.github.com/en/actions/reference/events-that-trigger-workflows#trigg
 
 The workaround is one of the following.
 
-1. Use personal access token instead of `secrets.GITHUB_TOKEN`
-2. Use CI other than GitHub Action on Pull Request build
+1. Use [GitHub App Token](https://github.com/marketplace/actions/github-app-token) instead of `secrets.GITHUB_TOKEN` **(RECOMMENDED)**
+2. Use personal access token instead of `secrets.GITHUB_TOKEN`
+3. Use CI other than GitHub Action on Pull Request build
 
 ## CHANGELOG
 https://github.com/sue445/go-mod-tidy-pr/blob/master/CHANGELOG.md
