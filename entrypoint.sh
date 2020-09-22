@@ -35,6 +35,25 @@ install_go() {
   rm "$go_tar"
 }
 
+install_git_lfs() {
+  git_lfs_url=$(curl -s https://api.github.com/repos/git-lfs/git-lfs/releases/latest \
+    | jq --raw-output '.assets[] | select( .name | contains("linux-amd64") ) | .browser_download_url')
+
+  echo "installing Git LFS (latest release)"
+  wget "$git_lfs_url"
+
+  git_lfs_tar="${git_lfs_url##*/}"
+  mkdir -pv ./git-lfs
+  tar -C ./git-lfs -zxvf "$git_lfs_tar"
+
+  cd git-lfs
+  ./install.sh
+  cd ..
+
+  rm "$git_lfs_tar"
+  rm -rf git-lfs
+}
+
 if [ -n "$DEBUG" ]; then
   set -x
   export HUB_VERBOSE="true"
@@ -48,6 +67,8 @@ cd "$GO_MOD_DIRCTORY"
 
 install_go
 export PATH="$PATH":/usr/local/go/bin
+
+install_git_lfs
 
 git config --global url."https://$GITHUB_TOKEN:x-oauth-basic@github.com".insteadOf "https://github.com"
 
