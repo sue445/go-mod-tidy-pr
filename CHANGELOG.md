@@ -1,5 +1,12 @@
 ## master
-[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.1...master)
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.0...master)
+
+## v1.5.0
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.1...v1.5.0)
+
+* Support `go get` from private module
+  * https://github.com/sue445/go-mod-tidy-pr/issues/37
+  * https://github.com/sue445/go-mod-tidy-pr/pull/38
 
 ## v1.4.1
 [full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.0...v1.4.1)
