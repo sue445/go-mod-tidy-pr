@@ -1,6 +1,6 @@
 #!/bin/sh -le
 
-export GITHUB_TOKEN="${1}"
+readonly GITHUB_TOKEN="${1}"
 readonly GIT_USER_NAME="${2}"
 readonly GIT_USER_EMAIL="${3}"
 readonly BASE="${4}"
@@ -67,8 +67,9 @@ if [ -z "$DUPLICATE" ]; then
   fi
 fi
 
-git config user.email "$GIT_USER_EMAIL"
-git config user.name "$GIT_USER_NAME"
+git config --global url."https://$GITHUB_TOKEN:x-oauth-basic@github.com".insteadOf "https://github.com"
+git config --global user.email "$GIT_USER_EMAIL"
+git config --global user.name "$GIT_USER_NAME"
 
 readonly BRANCH_NAME=go-mod-tidy-$(date +"%Y%m%d%H%M%S")
 
