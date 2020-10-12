@@ -1,5 +1,12 @@
 ## master
-[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.0...master)
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.1...master)
+
+## v1.5.1
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.0...v1.5.1)
+
+* Fixed. Error creating pull request: Unauthorized (HTTP 401)
+  * https://github.com/sue445/go-mod-tidy-pr/issues/40
+  * https://github.com/sue445/go-mod-tidy-pr/pull/41
 
 ## v1.5.0
 [full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.4.1...v1.5.0)
