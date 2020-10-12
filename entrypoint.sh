@@ -1,6 +1,6 @@
 #!/bin/sh -le
 
-readonly GITHUB_TOKEN="${1}"
+export GITHUB_TOKEN="${1}"
 readonly GIT_USER_NAME="${2}"
 readonly GIT_USER_EMAIL="${3}"
 readonly BASE="${4}"
@@ -135,4 +135,4 @@ if [ -n "$DRAFT" ]; then
   hub_args="$hub_args --draft"
 fi
 
-hub pull-request --no-edit --message="$PR_TITLE_PREFIX$(date)" "$hub_args"
+GITHUB_TOKEN=${GITHUB_TOKEN} hub pull-request --no-edit --message="$PR_TITLE_PREFIX$(date)" "$hub_args"
