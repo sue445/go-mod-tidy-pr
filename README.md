@@ -1,4 +1,4 @@
-# go-mod-tidy-pr
+# [DEPRECATED] go-mod-tidy-pr
 Run `go mod tidy` and create PullRequest on GitHub Actions
 
 https://github.com/marketplace/actions/go-mod-tidy-pr
@@ -6,6 +6,13 @@ https://github.com/marketplace/actions/go-mod-tidy-pr
 This is inspired by [circleci-bundle-update-pr](https://github.com/masutaka/circleci-bundle-update-pr)
 
 [![Build Status](https://github.com/sue445/go-mod-tidy-pr/workflows/test/badge.svg?branch=master)](https://github.com/sue445/go-mod-tidy-pr/actions?query=workflow%3Atest)
+
+## :warning: DEPRECATION
+Now, Dependabot officially supports `go mod tidy`.
+
+https://github.blog/changelog/2020-10-19-dependabot-go-mod-tidy-and-vendor-support/
+
+So this action is deprecated.
 
 ## Example
 ![example](img/example.png)
