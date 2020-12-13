@@ -1,5 +1,11 @@
 ## master
-[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.1...master)
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.2...master)
+
+## v1.5.2
+[full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.1...v1.5.2)
+
+* Upgrade to Ubuntu Focal
+  * https://github.com/sue445/go-mod-tidy-pr/pull/47
 
 ## v1.5.1
 [full changelog](http://github.com/sue445/go-mod-tidy-pr/compare/v1.5.0...v1.5.1)
