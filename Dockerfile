@@ -1,4 +1,4 @@
-FROM ubuntu:19.10
+FROM ubuntu:20.04
 
 ENV HUB_VERSION 2.14.1
 ENV DEBIAN_FRONTEND noninteractive
