@@ -27,6 +27,7 @@ name: go-mod-tidy-pr
 on:
   schedule:
     - cron: "0 0 * * 1" # Weekly build
+  workflow_dispatch:
 
 jobs:
   go-mod-tidy-pr:
